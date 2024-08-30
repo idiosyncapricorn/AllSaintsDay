@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<div id="top"></div>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Freddie Shouts!</title>
+        <style>
+            /* Existing CSS for zig-zag border */
+            .zigzag-border {
+              position: relative;
+              padding: 10px;
+            }
+          
+            .zigzag-border::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: 3px solid yellow;
+              border-radius: 5px;
+              box-shadow: 0 0 0 3px yellow;
+              clip-path: polygon(
+                0 0, 5% 0, 0 5%, 5% 5%, 0 10%, 5% 10%, 
+                0 15%, 5% 15%, 0 20%, 5% 20%, 0 25%, 
+                5% 25%, 0 30%, 5% 30%, 0 35%, 5% 35%, 
+                0 40%, 5% 40%, 0 45%, 5% 45%, 0 50%, 
+                5% 50%, 0 55%, 5% 55%, 0 60%, 5% 60%, 
+                0 65%, 5% 65%, 0 70%, 5% 70%, 0 75%, 
+                5% 75%, 0 80%, 5% 80%, 0 85%, 5% 85%, 
+                0 90%, 5% 90%, 0 95%, 5% 95%, 0 100%, 
+                100% 100%, 100% 0
+              );
+              z-index: 1;
+              .custom-font-navbar {
+            font-family: 'Roboto', sans-serif; /* Change the overall navbar font */
+            }
+
+            .custom-font-navbar .navbar-brand {
+            font-family: 'Pacifico', cursive; /* Different font for the brand */
+            }
+
+            .custom-font-navbar .nav-link {
+            font-family: 'Open Sans', sans-serif; /* Different font for the links */
+            }
+            
+                .li {
+            font-family: 'Lato', sans-serif;
+            }
+            .zigzag-border img {
+              display: block;
+              position: relative;
+              z-index: 0;
+            }
+          
+            @keyframes pulse {
+              0% {
+                transform: scale(1);
+                opacity: 1;
+              }
+              50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+              }
+              100% {
+                transform: scale(1);
+                opacity: 1;
+              }
+            }
+          
+            /* Additional styling for sections and containers */
+            .section {
+              padding: 2rem;
+            }
+          
+            .bg-primary {
+              background-color: #007bff; /* Example primary color */
+            }
+          </style>
+          
+        <style>
+            /* Existing CSS for zig-zag border */
+            .zigzag-border {
+              position: relative;
+              padding: 10px;
+            }
+          
+            
+          
+            /* Text styling with animation */
+            .image-info {
+              margin-top: 10px;
+              font-size: 50px; /* Increased font size */
+              color: #f70404; /* Change color as needed */
+              font-weight: bold;
+              animation: pulse 2s infinite; /* Animation effect */
+            }
+          
+            @keyframes pulse {
+              0% {
+                transform: scale(1);
+                opacity: 1;
+              }
+              50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+              }
+              100% {
+                transform: scale(1);
+                opacity: 1;
+              }
+            }
+            
+            body {
+                background-color: white;
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                scroll-behavior: smooth;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            .circle-header {
+                width: 400px;
+                height: 400px;
+                background-color: rgb(252, 6, 6);
+                border-radius: 50%;
+                margin: 20px auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-size: 240px;
+                font-weight: bold;
+            }
+            .menu-bar {
+                display: flex;
+                justify-content: center;
+                background-color: #333;
+                width: 100%;
+            }
+            .menu-bar a {
+                color: white;
+                padding: 100px 20px;
+                text-decoration: none;
+                text-align: center;
+                cursor: pointer;
+            }
+            .menu-bar a:hover {
+                background-color: #575757;
+            }
+            .header-container {
+                text-align: center;
+                padding-top: 20px;
+            }
+            .arrow-down {
+                display: block;
+                margin: 20px auto;
+                width: 0;
+                height: 0;
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                border-top: 20px solid black;
+                cursor: pointer;
+            }
+            .section {
+                flex: 1;
+                background-color: rgb(249, 6, 6);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                padding: 20px;
+            }
+            .section:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .section h2 {
+                margin: 0;
+                font-size: 36px;
+                color: rgb(250, 249, 249);
+                opacity: 0.5;
+                transition: opacity 1s ease-in-out;
+            }
+            .section h2.visible {
+                opacity: 1;
+            }
+            .section p {
+                font-size: 18px;
+                color: red;
+                text-align: center;
+                max-width: 800px;
+            }
+            .contact-section {
+                background-color: #f90303;
+                padding: 20px;
+                text-align: center;
+                margin-top: auto;
+            }
+            .contact-container {
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                padding: 100px;
+                width: 600px;
+                max-width: 300%;
+                margin: 0 auto;
+                text-align: left;
+            }
+            .red-container {
+                border: 2px solid red; /* Red border around the container */
+                padding: 10px; /* Space inside the border */
+                margin: 5px; /* Margin around the container, reduced from 10px to 5px */
+                background-color: red; /* Fill the container with a red background */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .text-center {
+                margin: 0; /* Remove default margin */
+                text-align: center;
+                font-size: 16px; /* Adjust font size as needed */
+                color: white; /* Set font color to white */
+            }
+
+            }
+            .input-group {
+                margin-bottom: 15px;
+            }
+            .input-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #f50505;
+            }
+            .input-group input,
+            .input-group textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            .input-group textarea {
+                resize: vertical;
+                min-height: 80px;
+            }
+            .button {
+                background-color: #f70707;
+                border: none;
+                color: white;
+                padding: 10px 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin-top: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .button:hover {
+                background-color: #0056b3;
+            }
+            .about-section {
+                position: relative;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                text-align: center;
+            }
+            .about-section iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                pointer-events: none;
+            }
+            .about-section .content {
+                z-index: 1;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
+            .project-containers {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 20px;
+                max-width: 960px; /* Adjust this value to center the containers */
+                margin: 0 auto; /* Centering the containers */
+            }
+            .project-container {
+                background-color: #f70909;
+                border-radius: 8px;
+                padding: 10px;
+                width: 200px; /* Smaller size for the containers */
+                max-width: 100%;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                position: relative;
+            }
+            .project-container:hover .red-overlay {
+                animation: meetHeader 0.5s forwards;
+            }
+            .red-overlay {
+                background-color: red;
+                border-radius: 8px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                pointer-events: none;
+            }
+            @keyframes meetHeader {
+                0% { opacity: 0; transform: translateY(-100%); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            .scroll-to-top {
+    position: fixed;
+    bottom: 100px; /* Distance from the bottom of the page */
+    right: 20px; /* Distance from the right edge of the page */
+    background-color: red; /* Red background color */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensures it is on top of other elements */
+    opacity: 0; /* Start with the icon hidden */
+    transition: opacity 0.3s ease; /* Smooth transition for the opacity change */
+}
+
+.scroll-to-top svg {
+    fill: white; /* Color of the SVG icon */
+    width: 24px;
+    height: 24px;
+}
+
+.scroll-to-top:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+     
+                /* Custom navbar styles */
+                .navbar {
+                    margin-left: auto;
+                    margin-right: auto;
+                    max-width: 1000px; /* Set maximum width of the navbar */
+                }
+                .navbar-brand {
+                    margin-right: 1rem; /* Adjust the margin of the brand if needed */
+                }
+                .navbar-toggler {
+                    margin-left: auto; /* Align toggle button to the right */
+                }
+                .navbar-nav {
+                    margin-left: auto;
+                    margin-right: auto; /* Center the navbar items */
+                }
+                .form-control {
+                    margin-left: 1rem; /* Add some margin to the left of the search input */
+                }
+                .btn-outline-light {
+                    margin-left: 0.5rem; /* Add some margin to the left of the search button */
+                }
+            </style>
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Full-Width Navbar</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+                <style>
+                    .navbar {
+                        width: 100%;
+                    }
+                    .navbar .container-fluid {
+                        max-width: 100%;
+                    }
+                </style>
+            </head>
+            <body>
+              
+            </style>
+          </head>
+          <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+
+    <!-- Bootstrap CSS -->
+  
+<!-- Navbar -->    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .bg-custom-red {
+        background-color: red;
+    }
+</style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-custom-red navbar-dark rounded custom-font-navbarwww">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="https://www.tumblr.com/freddiefriscostyling">Steelo Mag</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/digginmysteelo/">Portraits</a>
+                        </ul>
+                    </li>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+<!-- Freddie Logo -->  
+<div class="header-container">
+    <div class="circle-header">FMN</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; margin-top: 1rem; margin-bottom: 1rem;">
+    <!-- Flickr Image -->
+    <div class="flickr-container">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53933168641/" title="Untitled">
+            <img src="https://live.staticflickr.com/65535/53933168641_50be99e22f_b.jpg" width="1000" height="180" alt="Untitled"/>
+        </a>
+    </div>
+    <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+</body>
+<!-- Flickr Embed Code -->     
+    <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53932055612/in/dateposted-public/" title="STEELO VOL.I">
+      <img src="https://live.staticflickr.com/65535/53932055612_02e6e3e069_b.jpg" width="1000" height="1024" alt="STEELO VOL.I" style="max-width: 100%; height: auto;"/>
+    </a>
+    <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+    
+    <!-- New Flickr Embed Code -->
+    <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53933319984/" title="Untitled">
+      <img src="https://live.staticflickr.com/65535/53933319984_c49ca55e73_o.jpg" width="500" height="281" alt="Untitled"/>
+    </a>
+    <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+  
+    <!-- Text Block -->
+    <div style="display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; margin-bottom: 1rem; width: 100%; max-width: 600px;">
+      <div style="flex: 1; text-align: center;">
+        <h1 style="font-size: 1.25rem; font-style: italic; line-height: 1.5; color: #333;">
+          Steelo Magazine Vol. 1 
+
+          “Lost and Found” 
+          <br><br>
+          I had an amazing time putting the first issue of Steelo together with my friend and fashion killa Robert. This issue is more than just a photoshoot. It is a story of finding yourself in the midst of feeling lost. Being lost or in transition is a scary thing, but we really find who we are when we go through trials and tribulations. We become stronger and clearer after going through storms.
+        </h1>
+      </div>
+    </div>
+</div>
+      
+<!-- Apparel -->  
+<div class="container bg-pink p-4 mx-auto" style="max-width: 90%;">
+    <div id="portfolio" class="section text-center" style="font-family: 'Courier New', Courier, monospace; font-size: 18rem;">
+        <a href="https://www.teespring.com" target="_blank" style="text-decoration: none; color: inherit;">
+            <h2>New Arrivals</h2>
+        </a>
+    </div>
+</div>
+<style>
+    .bodoni-text {
+        font-family: 'Bodoni 72', serif;
+        font-style: italic;
+    }
+</style>
+<div class="container text-center">
+    <!-- Row for images with zigzag border -->
+    <div class="row">
+        <div class="col-6">
+            <!-- Embed first Flickr image with zigzag border and text -->
+            <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53933185604/" title="2024-08-19 10:18:32" class="zigzag-border">
+                <img src="https://live.staticflickr.com/65535/53933185604_7a6538ccfc_c.jpg" alt="2024-08-19 10:18:32" style="width: 100%; height: auto;" />
+            </a>
+            <p class="image-info">
+                <a href="https://www.teespring.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    9.8 Gravity Flux Tee
+                </a>
+            </p>
+        </div>
+        <div class="col-6">
+            <!-- Embed second Flickr image with zigzag border and text -->
+            <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53933186289/" title="AF79154E-BED2-4589-8A9B-F35100BF414B" class="zigzag-border">
+                <img src="https://live.staticflickr.com/65535/53933186289_eaba9dd161_c.jpg" alt="AF79154E-BED2-4589-8A9B-F35100BF414B" style="width: 100%; height: auto;" />
+            </a>
+            <p class="image-info">
+                <a href="https://www.teespring.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    Bay Area Button Up 
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <!-- Embed third Flickr image with zigzag border and text -->
+            <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53932745241/" title="6BAA2D1D-56C1-4538-9894-47796AAD0DA9" class="zigzag-border">
+                <img src="https://live.staticflickr.com/65535/53932745241_1b7a99f3d8_c.jpg" alt="6BAA2D1D-56C1-4538-9894-47796AAD0DA9" style="width: 100%; height: auto;" />
+            </a>
+            <p class="image-info">
+                <a href="https://www.teespring.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    9.8 Flux Tee 
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <!-- Embed fourth Flickr image with zigzag border and text -->
+            <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53908105335/" title="Untitled" class="zigzag-border">
+                <img src="https://live.staticflickr.com/65535/53908105335_f12bc9ba12_c.jpg" alt="Untitled" style="width: 100%; height: auto;" />
+            </a>
+            <p class="image-info">
+                <a href="https://www.teespring.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    Slickback Turtleneck 
+                </a>
+            </p>
+            <!-- Embed Flickr Image -->
+        <div>
+            <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53934537257/in/dateposted-public/" title="sample-size-chart">
+                <img src="https://live.staticflickr.com/65535/53934537257_7a48024a34.jpg" width="497" height="180" alt="sample-size-chart"/>
+            </a>
+            <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+<div style="display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; margin-bottom: 1rem;">
+    <div class="container bg-pink p-4 mx-auto" style="max-width: 90%;">
+        <div id="portfolio" class="section text-center" style="font-family: 'Courier New', Courier, monospace; font-size: 18rem; color:;">
+            <h2>Commission</h2>
+        </div>       
+    </div>
+    <div class="container text-center">
+</div>    
+ <!-- Contact Section -->
+<div id="contact" class="contact-section" style="flex: 1; max-width: 700px; margin: 0 auto;">
+    <div class="contact-container">
+      <h2>Contact Freddie!</h2>
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+      </div>
+      <div class="input-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number">
+      </div>
+      <div class="input-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Enter your message"></textarea>
+      </div>
+      <button class="button">Send</button>
+    </div>
+  </div>
+  
+  <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1rem; margin-bottom: 1rem;">
+    <div style="flex: 1; max-width: 700px; margin: 0 auto;">
+      <h1 style="font-size: 1.25rem; font-style: italic; line-height: 1.5; color: #333;">
+        Freddie Nicholson II is a talented designer and photographer hailing from the vibrant Bay Area. His work is a blend of creativity and authenticity, reflecting the diverse and dynamic culture of his surroundings. With a keen eye for detail and a passion for storytelling, Freddie's photography captures moments that resonate with emotion, while his design work pushes boundaries, exploring bold and innovative concepts.
+        Freddie's unique perspective and commitment to his craft have not only garnered attention but have also positioned him as a queer icon in the making. His work is not just about aesthetics; it's about representation and breaking down barriers. As he continues to evolve as an artist, Freddie Nicholson II is set to inspire and influence a new generation of creatives, making waves in both the design and LGBTQ+ communities.
+      </h1>
+    </div>
+  
+    <!-- New Flickr Embed Code with Margin Adjustment -->
+    <div style="margin-top: 2rem;">
+      <a data-flickr-embed="true" href="https://www.flickr.com/photos/200362901@N07/53624689725/in/dateposted-public/" title="k - 1">
+        <img src="https://live.staticflickr.com/65535/53624689725_e011793463_w.jpg" width="400" height="200" alt="k - 1"/>
+      </a>
+      <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+    </div>
+  </div>
+  
+
+  <!-- License Statement -->
+  <div class="red-container">
+    <p class="text-center">
+        All merchandise is 100% organic and made in America. We are dedicated to quality and sustainability. | 
+        © 2024 Fredrich Nicholson. Creative Commons Attribution 4.0 International License.
+    </p>
+</div>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll to Top Icon</title>
+    <style>
+        /* Style for the scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 100px; /* Distance from the bottom of the page */
+            right: 20px; /* Distance from the right edge of the page */
+            background-color: red; /* Red background color */
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Ensures it is on top of other elements */
+            opacity: 0; /* Start with the icon hidden */
+            transition: opacity 0.3s ease; /* Smooth transition for the opacity change */
+        }
+
+        .scroll-to-top svg {
+            fill: white; /* Color of the SVG icon */
+            width: 24px;
+            height: 24px;
+        }
+
+        .scroll-to-top:hover {
+            background-color: darkred; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Your content here -->
+    <button class="scroll-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767z"/>
+        </svg>
+    </button>
+    <!-- Your content here -->
+    <script>
+        document.addEventListener('scroll', function () {
+            var scrollToTopButton = document.querySelector('.scroll-to-top');
+            var scrollPosition = window.scrollY;
+            var fadePoint = 600; // The point at which the icon starts to fade in
+
+            if (scrollPosition > fadePoint) {
+                scrollToTopButton.style.opacity = 1; // Show the button
+            } else {
+                scrollToTopButton.style.opacity = 0; // Hide the button
+            }
+        });
+    </script>
+</body>
+</html>
