@@ -1,3 +1,7 @@
+```markdown
+
+----
+
 # All Saints Day: A Photography Portfolio
 
 **Author:** [idiosyncapricorn](https://idiosyncapricorn.github.io/AllSaintsDay/)
@@ -29,3 +33,5 @@ Visit the live site [here](https://idiosyncapricorn.github.io/AllSaintsDay/).
 ## License
 
 Licensed under the MIT License. See the [LICENSE](https://github.com/idiosyncapricorn/AllSaintsDay/blob/main/LICENSE) for details.
+
+----
